@@ -32,7 +32,12 @@
 
 // For bonus 2
 if (process.argv.length > 2) {
-  addNumbers();
+  if (process.argv[2] === "addNumbers") {
+    addNumbers();
+  }
+  else if (process.argv[2] === "addLetters") {
+    addLetters();
+  }
 }
 
 function addNumbers(){
@@ -64,4 +69,23 @@ function addNumbers(){
     }
   }
   console.log("Total is: " + sum_total);
+}
+
+function addLetters(){
+  var sum_total = 0;
+
+  var letters_to_add = process.argv[3];
+  var letters_to_add_array = letters_to_add.split("");
+
+  var alphabets = "abcdefghijklmnopqrstuvwxyz";
+  var letters = alphabets.split("");
+
+  for (var i = 0; i < letters_to_add_array.length; i++) {
+    console.log("Current letter is : " + letters_to_add_array[i]);
+    let letter_value = letters.indexOf(letters_to_add_array[i]);
+    console.log("Value of letter is : " + letter_value);
+    sum_total += (letter_value + 1);
+  }
+
+  console.log("Total is " + sum_total);
 }
